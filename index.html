@@ -1,162 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Fire Shop🔥</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snaaya AI - Voice Assistant</title>
     <style>
-body {
-	margin: 0;
-	padding: 0;
-	font-size: 18px;
-	color: white;
-	background: black;
-}
-
-.container {
-	max-width: 390px;
-}
-
-.inner {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 200px 200px 200px;
-}
-
-.img {
-	width: 150px;
-}
-
-.item {
-	text-align: center;
-}
-
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	border: none;
-	background: rgb(248, 168, 24);
-	border-radius: 10px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-
-	transition: background .2s linear;
-}
-
-.btn:hover {
-	background: lightgreen;
-}
-
-.usercard {
-	text-align: center;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b);
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-top: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #38bdf8;
+            margin-bottom: 5px;
+        }
+        p {
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 500px;
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .message {
+            padding: 10px 14px;
+            border-radius: 10px;
+            max-width: 80%;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .user-message {
+            background: #3b82f6;
+            color: white;
+            align-self: flex-end;
+        }
+        .ai-message {
+            background: #334155;
+            color: #f8fafc;
+            align-self: flex-start;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 10px;
+        }
+        .mic-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+            transition: 0.3s;
+        }
+        .mic-btn.listening {
+            background: #22c55e;
+            box-shadow: 0 0 25px rgba(34, 197, 94, 0.8);
+            transform: scale(1.05);
+        }
+        #status {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
     </style>
-    <script>
-        let tg = window.Telegram.WebApp;
-
-tg.expand();
-
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.color = '#2cab37';
-
-let item = "";
-
-let btn1 = document.getElementById("btn1");
-let btn2 = document.getElementById("btn2");
-let btn3 = document.getElementById("btn3");
-let btn4 = document.getElementById("btn4");
-let btn5 = document.getElementById("btn5");
-let btn6 = document.getElementById("btn6");
-
-btn1.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 1!");
-		item = "1";
-		tg.MainButton.show();
-	}
-});
-
-btn2.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 2!");
-		item = "2";
-		tg.MainButton.show();
-	}
-});
-
-btn3.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 3!");
-		item = "3";
-		tg.MainButton.show();
-	}
-});
-
-btn4.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 4!");
-		item = "4";
-		tg.MainButton.show();
-	}
-});
-
-btn5.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 5!");
-		item = "5";
-		tg.MainButton.show();
-	}
-});
-
-btn6.addEventListener("click", function(){
-	if (tg.MainButton.isVisible) {
-		tg.MainButton.hide();
-	}
-	else {
-		tg.MainButton.setText("Вы выбрали товар 6!");
-		item = "6";
-		tg.MainButton.show();
-	}
-});
-
-
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-	tg.sendData(item);
-});
-
-
-let usercard = document.getElementById("usercard");
-
-let p = document.createElement("p");
-
-p.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}`;
-
-usercard.appendChild(p);
-    </script>
 </head>
 <body>
 
-  <div id="main">
-     <h1>FIRE SHOP</h1>
-      <img src="https://i.ibb.co/Sty2Rwn/rounded-in-photoretrica-23.png">
-     <p>Верификация кошелька</p>
-     <button id="huy"> Kyпить </button>
-  </div>
+    <header>
+        <h1>Snaaya AI</h1>
+        <p>आपकी पर्सनल वॉयस असिस्टेंट</p>
+    </header>
+
+    <div class="chat-container" id="chatBox">
+        <div class="message ai-message">नमस्ते! मैं सनाया हूँ। नीचे दिए गए माइक बटन को दबाकर मुझसे कुछ भी पूछिए।</div>
+    </div>
+
+    <div class="controls">
+        <div id="status">माيك बटन दबाकर बोलें...</div>
+        <button class="mic-btn" id="micBtn" onclick="toggleSpeech()">🎤</button>
+    </div>
+
+    <script>
+        const micBtn = document.getElementById('micBtn');
+        const statusText = document.getElementById('status');
+        const chatBox = document.getElementById('chatBox');
+
+        function appendMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message');
+            msgDiv.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
+            msgDiv.innerText = text;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function toggleSpeech() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRecognition) {
+                alert("आपका ब्राउज़र स्पीच रिकग्निशन सपोर्ट नहीं करता है। क्रोम का इस्तेमाल करें।");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'hi-IN'; // हिंदी भाषा के लिए
+            recognition.interimResults = false;
+
+            recognition.onstart = function() {
+                micBtn.classList.add('listening');
+                statusText.innerText = "सुन रही हूँ... बोलिए!";
+            };
+
+            recognition.onresult = function(event) {
+                const speechToText = event.results[0][0].transcript;
+                appendMessage(speechToText, 'user');
+                statusText.innerText = "प्रोसेस हो रहा है...";
+                
+                // यहाँ AI रिपॉइंट जोड़ेंगे, अभी डेमो जवाब दे रहे हैं
+                setTimeout(() => {
+                    const reply = "आपने कहा: " + speechToText + "। यह बहुत अच्छा सवाल है!";
+                    appendMessage(reply, 'ai');
+                    statusText.innerText = "माइक बटन दबाकर बोलें...";
+                }, 1000);
+            };
+
+            recognition.onerror = function(event) {
+                micBtn.classList.remove('listening');
+                statusText.innerText = "त्रुटि हुई, दोबारा कोशिश करें।";
+            };
+
+            recognition.onend = function() {
+                micBtn.classList.remove('listening');
+            };
+
+            recognition.start();
+        }
+    </script>
 </body>
 </html>
